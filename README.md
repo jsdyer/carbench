@@ -25,3 +25,7 @@ The default build uses the committed snapshot and is offline. The first main pus
 ## Development and privacy
 
 Run `node --test tests/*.test.mjs`, `python3 -m unittest discover -s tests -v`, `python3 scripts/build.py`; browser checks run in CI. Main builds deploy with GitHub Pages Actions. Inputs stay on the device. Explicit saves use `coolcode:carbench:comparison:v1` and can be deleted. The standard visit counter receives the tool ID, not vehicle choices or costs.
+
+## Ready-to-use example
+
+[Electric Car Energy Costs in Canada](https://coolcode.ca/carbench/electric-car-ratings.html) opens this scenario in the same tool. Start with battery electric vehicles in the published Canadian ratings. Choose a model, enter your annual kilometres and set your home and public charging prices. The results show annual electricity consumption and cost.
