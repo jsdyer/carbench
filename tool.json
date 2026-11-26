@@ -17,6 +17,7 @@
   "access": "browser",
   "data_info": {
     "mode": "snapshot",
-    "detail": "NRCan fuel and battery-electric vehicle ratings, combined with visitor-entered driving and price assumptions."
+    "detail": "NRCan fuel and battery-electric vehicle ratings, combined with visitor-entered driving and price assumptions.",
+    "cadence": "Monthly"
   }
 }
