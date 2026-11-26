@@ -28,4 +28,4 @@ Run `node --test tests/*.test.mjs`, `python3 -m unittest discover -s tests -v`, 
 
 ## Ready-to-use example
 
-[Electric Car Energy Costs in Canada](https://coolcode.ca/carbench/electric-car-ratings.html) opens this scenario in the same tool. Start with battery electric vehicles in the published Canadian ratings. Choose a model, enter your annual kilometres and set your home and public charging prices. The results show annual electricity consumption and cost.
+[Electric Car Energy Costs in Canada](https://coolcode.ca/carbench/electric-car-ratings.html) opens this scenario in the same tool. See the annual electricity cost for a battery electric vehicle from the published Canadian ratings. The example uses 20,000 km a year. Change the vehicle, distance or charging prices to compare your own costs.

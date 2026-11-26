@@ -54,7 +54,7 @@ def main():
                 case_page = browser.new_page(viewport={'width': 390, 'height': 844})
                 case_page.route('https://**/*', lambda route: route.abort())
                 case_page.goto(f'http://127.0.0.1:{server.server_port}/example-tool/electric-car-ratings.html')
-                case_page.wait_for_function("() => {const q=s=>document.querySelector(s);return q('#kind').value==='electric' && q('#vehicles article') !== null;}")
+                case_page.wait_for_function("() => {const q=s=>document.querySelector(s);return q('#kind').value==='electric' && q('#result-0')?.textContent.includes('Energy per year');}")
                 assert case_page.locator('link[rel="canonical"]').get_attribute('href') == 'https://coolcode.ca/carbench/electric-car-ratings.html'
                 assert case_page.locator('h1').inner_text() in case_page.title()
                 assert case_page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
