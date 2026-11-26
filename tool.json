@@ -10,7 +10,7 @@
     "Canada",
     "costs"
   ],
-  "icon": "car",
+  "icon": "route",
   "url": "/carbench/",
   "source": "https://github.com/jsdyer/carbench",
   "hosting": "project",
