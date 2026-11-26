@@ -25,14 +25,17 @@ jobs:
         with:
           node-version: '24'
       - name: Test the application
-        run: node --test tests/*.test.mjs
+        run: |
+          node --check web/app.mjs
+          node --test tests/*.test.mjs
       - name: Test the builder
         run: python3 -m unittest discover -s tests -v
       - name: Refresh NRCan ratings
+        id: refresh
         if: github.event_name != 'pull_request' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || hashFiles('web/data/index.json') == '')
         run: python3 scripts/refresh.py
       - name: Save validated ratings
-        if: github.event_name != 'pull_request' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || hashFiles('web/data/index.json') == '')
+        if: steps.refresh.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
