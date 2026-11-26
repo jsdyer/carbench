@@ -1,0 +1,110 @@
+{
+  "capturedAt": "2026-11-26T04:42:45.237624+00:00",
+  "dataset": "https://open.canada.ca/data/en/dataset/98f1a129-f628-4ce4-b24d-6f16bf24dd64",
+  "licence": "https://open.canada.ca/en/open-government-licence-canada",
+  "sources": [
+    {
+      "id": "c98b9dc8-b23f-4cd8-8b19-e892da1e4688",
+      "title": "2015-2024 Fuel Consumption Ratings (2026-09-15)",
+      "url": "https://open.canada.ca/data/dataset/98f1a129-f628-4ce4-b24d-6f16bf24dd64/resource/c98b9dc8-b23f-4cd8-8b19-e892da1e4688/download/my2015-2024-fuel-consumption-ratings.csv",
+      "updated": "2026-09-23T19:44:01.361916",
+      "sha256": "adb157dccde5d954d34b8a068f9dd604ad28b0050d2bb3ba17d26678761d2cb7",
+      "rows": 10060
+    },
+    {
+      "id": "d589f2bc-9a85-4f65-be2f-20f17debfcb1",
+      "title": "2025 Fuel Consumption Ratings (2026-07-24)",
+      "url": "https://open.canada.ca/data/dataset/98f1a129-f628-4ce4-b24d-6f16bf24dd64/resource/d589f2bc-9a85-4f65-be2f-20f17debfcb1/download/my2025-fuel-consumption-ratings.csv",
+      "updated": "2026-10-16T13:27:59.592398",
+      "sha256": "46088cd4853987ef7a684f0b0af86e93e83dfaa378607a4750958c996248639c",
+      "rows": 701
+    },
+    {
+      "id": "9df1b18d-d036-4783-a61c-99f1f75b3ac5",
+      "title": "2026 Fuel Consumption Ratings (2026-10-06)",
+      "url": "https://open.canada.ca/data/dataset/98f1a129-f628-4ce4-b24d-6f16bf24dd64/resource/9df1b18d-d036-4783-a61c-99f1f75b3ac5/download/my2026-fuel-consumption-ratings.csv",
+      "updated": "2026-10-16T13:26:23.388739",
+      "sha256": "88144b951172df0251b4049ea560ed30c765f418298ed459484f3b906f661991",
+      "rows": 613
+    },
+    {
+      "id": "026e45b4-eb63-451f-b34f-d9308ea3a3d9",
+      "title": "Battery-electric vehicles 2012-2026 (2026-09-29)",
+      "url": "https://open.canada.ca/data/dataset/98f1a129-f628-4ce4-b24d-6f16bf24dd64/resource/026e45b4-eb63-451f-b34f-d9308ea3a3d9/download/my2012-2026-battery-electric-vehicles.csv",
+      "updated": "2026-09-29T21:33:51.575288",
+      "sha256": "d37f52ee8049e93b37f66ac233b037e6abe0218ef3635ef6cbddf8fb8c675f51",
+      "rows": 1250
+    },
+    {
+      "id": "8812228b-a6aa-4303-b3d0-66489225120d",
+      "title": "Plug-in hybrid electric vehicles 2012-2026 (2026-09-29)",
+      "url": "https://open.canada.ca/data/dataset/98f1a129-f628-4ce4-b24d-6f16bf24dd64/resource/8812228b-a6aa-4303-b3d0-66489225120d/download/my2012-2026-plug-in-hybrid-electric-vehicles.csv",
+      "updated": "2026-09-29T21:36:53.139138",
+      "sha256": "4093cb5edad631210d7957a84967566b6b1196decdfbbdc0c345dea9a78c5c8a",
+      "rows": 409
+    }
+  ],
+  "count": 13033,
+  "years": [
+    {
+      "year": 2026,
+      "count": 947
+    },
+    {
+      "year": 2025,
+      "count": 1036
+    },
+    {
+      "year": 2024,
+      "count": 1058
+    },
+    {
+      "year": 2023,
+      "count": 1111
+    },
+    {
+      "year": 2022,
+      "count": 1099
+    },
+    {
+      "year": 2021,
+      "count": 1059
+    },
+    {
+      "year": 2020,
+      "count": 1046
+    },
+    {
+      "year": 2019,
+      "count": 1117
+    },
+    {
+      "year": 2018,
+      "count": 1129
+    },
+    {
+      "year": 2017,
+      "count": 1100
+    },
+    {
+      "year": 2016,
+      "count": 1149
+    },
+    {
+      "year": 2015,
+      "count": 1151
+    },
+    {
+      "year": 2014,
+      "count": 15
+    },
+    {
+      "year": 2013,
+      "count": 13
+    },
+    {
+      "year": 2012,
+      "count": 3
+    }
+  ]
+}
