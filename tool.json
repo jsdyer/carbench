@@ -1,16 +1,22 @@
 {
-  "id": "coolcode-tool-template",
-  "title": "CoolCode Tool Starter",
-  "description": "A browser-only example that trims lines and removes exact duplicates.",
-  "category": "security",
-  "tags": ["text", "lines", "duplicates"],
-  "icon": "scan-search",
-  "url": "/coolcode-tool-template/",
-  "source": "https://github.com/jsdyer/coolcode-tool-template",
+  "id": "carbench",
+  "title": "Car Bench",
+  "description": "Compare Canadian vehicle fuel and electricity costs with NRCan ratings and your driving assumptions.",
+  "category": "money",
+  "tags": [
+    "cars",
+    "fuel",
+    "electric vehicles",
+    "Canada",
+    "costs"
+  ],
+  "icon": "car",
+  "url": "/carbench/",
+  "source": "https://github.com/jsdyer/carbench",
   "hosting": "project",
   "access": "browser",
   "data_info": {
-    "mode": "local",
-    "detail": "The browser reads the text you paste and compares its lines."
+    "mode": "snapshot",
+    "detail": "NRCan fuel and battery-electric vehicle ratings, combined with visitor-entered driving and price assumptions."
   }
 }

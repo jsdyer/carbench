@@ -1,21 +1,7 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
-import { cleanLines } from '../web/model.mjs';
-test('trims, removes blanks and preserves first-seen order', () => {
-  assert.deepEqual(cleanLines('  Halifax\nLangley\nHalifax\n\nVancouver  '), {
-    text: 'Halifax\nLangley\nVancouver', count: 3, removed: 1,
-  });
-});
-test('supports Windows and old Mac line endings', () => {
-  assert.equal(cleanLines('a\r\nb\ra').text, 'a\nb');
-});
-test('empty text and whitespace produce an empty result', () => {
-  assert.deepEqual(cleanLines(' \n\t'), { text: '', count: 0, removed: 0 });
-});
-test('preserves case and Unicode', () => {
-  assert.equal(cleanLines('Québec\nquébec\n東京\nQuébec').text, 'Québec\nquébec\n東京');
-});
-test('treats markup as ordinary text', () => {
-  assert.equal(cleanLines('<script>alert(1)</script>\n<script>alert(1)</script>').text, '<script>alert(1)</script>');
-});
-test('rejects non-text input', () => { assert.throws(() => cleanLines(null), TypeError); });
+import test from'node:test';import assert from'node:assert/strict';import{energy,ownership,filterVehicles,csvCell}from'../web/model.mjs';const s={km:10000,city:50,years:5,regular:2,premium:2.5,diesel:2,ethanol:1.5,power:.2,publicPower:.6,publicShare:25,plugShare:50,factor:1};const gas={kind:'fuel',fuel:'X',city:10,highway:6,combined:8,modeFuel:0};
+test('fuel cost uses city-highway weighting and annual distance',()=>{const r=energy(gas,s);assert.equal(r.litres,800);assert.equal(r.cost,1600);assert.equal(r.kwh,0)});
+test('EV price blends energy purchased at home/public, not vehicles',()=>{const r=energy({kind:'electric',fuel:'B',electric:20},s);assert.equal(r.kwh,2000);assert.ok(Math.abs(r.cost-600)<1e-8);assert.equal(r.litres,0)});
+test('plug-in hybrids include fuel in charged mode and gasoline mode',()=>{const r=energy({...gas,kind:'plugin',electric:20,modeFuel:.5},s);assert.equal(r.kwh,1000);assert.equal(r.litres,425);assert.equal(r.cost,1150)});
+test('total includes net capital and entered annual costs',()=>{const r=ownership(gas,s,{purchase:30000,resale:10000,other:1500});assert.equal(r.total,35500)});
+test('zero km supported; blank negative and unsupported fuel rejected',()=>{assert.equal(energy(gas,{...s,km:0}).cost,0);for(const patch of[{km:''},{city:101},{factor:-1}])assert.throws(()=>energy(gas,{...s,...patch}));assert.throws(()=>energy({...gas,fuel:'Q'},s))});
+test('filters allow arbitrary real models beyond defaults; CSV cannot execute formulas',()=>{assert.equal(filterVehicles([{make:'Future',model:'Extra model',class:'Compact',kind:'electric'}],{query:'extra'}).length,1);assert.equal(csvCell('=bad'),'"\'=bad"')});

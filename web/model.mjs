@@ -1,7 +1,7 @@
-// Keep transformations separate from the DOM so they can be tested directly.
-export function cleanLines(text) {
-  if (typeof text !== 'string') throw new TypeError('Expected text');
-  const lines = text.split(/\r\n|\r|\n/).map(line => line.trim()).filter(Boolean);
-  const unique = [...new Set(lines)];
-  return { text: unique.join('\n'), count: unique.length, removed: lines.length - unique.length };
-}
+export const fuelNames={X:'Regular gasoline',Z:'Premium gasoline',D:'Diesel',E:'E85',B:'Electricity'};
+export function valid(v,name,min=0,max=1e9){if(v===''||v==null)throw Error(`Enter ${name}.`);const n=Number(v);if(!Number.isFinite(n)||n<min||n>max)throw Error(`${name} must be between ${min} and ${max}.`);return n;}
+export function energy(v,s){const km=valid(s.km,'annual distance',0,1e6),city=valid(s.city,'city driving share',0,100)/100,factor=valid(s.factor,'consumption multiplier',.1,5);const fraction=v.kind==='plugin'?valid(s.plugShare,'plug-in electric-mode distance share',0,100)/100:v.kind==='electric'?1:0;const normalL=v.city!=null&&v.highway!=null?v.city*city+v.highway*(1-city):v.combined||0;const litres=km/100*((1-fraction)*normalL+fraction*(v.modeFuel||0))*factor;const kwh=km/100*fraction*(v.electric||0)*factor;const rates={X:s.regular,Z:s.premium,D:s.diesel,E:s.ethanol,B:0};if(!(v.fuel in rates)&&litres>0)throw Error(`Fuel ${v.fuel} is not priced by this calculator.`);const fuelPrice=valid(rates[v.fuel]??0,'fuel price',0,20);const publicShare=valid(s.publicShare,'public charging share',0,100)/100;const power=valid(s.power,'home electricity price',0,10),publicPower=valid(s.publicPower,'public electricity price',0,10);return{litres,kwh,cost:litres*fuelPrice+kwh*(power*(1-publicShare)+publicPower*publicShare),normalL,electricFraction:fraction};}
+export function ownership(v,s,c){const e=energy(v,s),years=valid(s.years,'ownership years',1,30),purchase=valid(c.purchase,'purchase cost',0,1e7),resale=valid(c.resale,'resale value',0,1e7),other=valid(c.other,'other annual costs',0,1e6);return{...e,annual:e.cost+other,total:purchase-resale+years*(e.cost+other),purchase,resale,other,years};}
+export function label(v){return`${v.year} ${v.make} ${v.model}${v.engine?' · '+v.engine+'L':''} · ${v.transmission} · ${fuelNames[v.fuel]||v.fuel}`;}
+export function filterVehicles(rows,{query='',kind=''}={}){const q=query.toLowerCase().trim();return rows.filter(r=>(!kind||r.kind===kind)&&(!q||[r.make,r.model,r.class,r.transmission,r.engine].join(' ').toLowerCase().includes(q)))}
+export function csvCell(v){let text=String(v??'');if(/^[=+\-@\t\r]/.test(text))text="'"+text;return '"'+text.replaceAll('"','""')+'"';}
